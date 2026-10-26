@@ -3,6 +3,7 @@ import reading from './reading.json';
 import speaking from './speaking.json';
 import writing from './writing.json';
 import vocab from './vocab.json';
+import quotes from './quotes.json';
 import type { ListeningItem, ReadingItem, SpeakingItem, Word, WritingItem } from '../types';
 
 export const TOTAL_DAYS = 60;
@@ -19,5 +20,6 @@ export function getDay(day: number) {
     speaking: (speaking as SpeakingItem[])[i],
     writing: (writing as WritingItem[])[i],
     words: allWords.slice(i * WORDS_PER_DAY, day * WORDS_PER_DAY),
+    quote: quotes[i] as { text: string; author: string },
   };
 }

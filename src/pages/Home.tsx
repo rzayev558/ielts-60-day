@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { SECTIONS } from '../types';
-import { TOTAL_DAYS, allWords } from '../data';
+import { TOTAL_DAYS, allWords, getDay } from '../data';
 import {
   exportBackup,
   importBackup,
@@ -25,9 +25,16 @@ export default function Home() {
   const missed = results.filter((r) => r === 'missed').length;
   const { current, best } = streaks(s.activity);
   const pct = Math.round((sectionsDone / (TOTAL_DAYS * SECTIONS.length)) * 100);
+  const quote = getDay(nextDay).quote;
 
   return (
     <div className="page">
+      <figure className="quote">
+        <figcaption className="quote-day">Quote of Day {nextDay}</figcaption>
+        <blockquote>“{quote.text}”</blockquote>
+        <p className="quote-author">{quote.author}</p>
+      </figure>
+
       <header className="hero">
         <p className="eyebrow">60-day IELTS plan · A2 → B1+</p>
         <h1>
